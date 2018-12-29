@@ -1,0 +1,94 @@
+
+
+\documentclass{article}
+\usepackage{tikz}
+\usetikzlibrary{decorations.text, calc}
+\usepackage{eso-pic}
+\usepackage{fontspec}
+\usepackage{pifont}
+\pagestyle{empty}
+\usepackage{enumitem}
+
+\newif\ifgminfo
+ \gminfotrue % uncomment to also include information only for the GM
+
+\newcommand\PlaceText[3]{%
+\begin{tikzpicture}[remember picture,overlay]
+\node[outer sep=0pt,inner sep=0pt,anchor=south west] 
+  at ([xshift=#1,yshift=-#2]current page.north west) {#3};
+\end{tikzpicture}%
+}
+
+\newcommand{\enquote}[1]{“#1”}
+
+
+\newcommand{\placetextbox}[4]{% \placetextbox{<horizontal pos>}{<vertical pos>}{<width>}{<contents>}
+  %\setbox0=\vbox to 5cm{#3}% Put <stuff> in a box
+  \AddToShipoutPictureFG*{% Add <stuff> to current page foreground
+    %\put(\LenToUnit{#1},\LenToUnit{#2}){\vtop{{\null}\makebox[5cm][c]{#3}}}%
+    \put(\LenToUnit{#1\paperwidth},\LenToUnit{#2\paperheight}){\vtop{{\null}\begin{minipage}[c]{#3}#4\end{minipage}}}%
+  }%
+}%
+
+% Fonts
+\newfontfamily\fontkingandqueen{the King & Queen font}
+\newfontfamily\fontcelestiaantiqua{Celestia Antiqua Std}[LetterSpace=2, WordSpace=2]
+\setmainfont{Celestia Antiqua Std}[LetterSpace=2, WordSpace=2]
+
+\renewcommand{\labelitemi}{\ding{118}}
+
+
+\begin{document}
+\phantom{.}
+\input{page1}
+\newpage
+\phantom{.}
+\input{page2}
+\newpage
+\phantom{.}
+\input{page3}
+\newpage
+\phantom{.}
+\input{page4}
+\newpage
+\phantom{.}
+\input{page5}
+\newpage
+\phantom{.}
+\input{page6}
+\newpage
+\phantom{.}
+\input{page7} 
+\newpage
+\phantom{.}
+\input{page8} 
+\ifgminfo
+	\newpage
+	\phantom{.}
+	\input{page9}
+\fi
+\newpage
+\phantom{.}
+\input{page10} 
+\newpage
+\phantom{.}
+\newfontfamily\fontcelestiaantiquaB{Celestia Antiqua Std}[LetterSpace=2, WordSpace=.5]
+\input{page11}
+\newpage
+\phantom{.}
+\input{page12}
+\newpage
+\phantom{.}
+\input{page13}
+\newpage
+\phantom{.}
+\input{page14}
+\newpage
+\phantom{.}
+\input{page15}
+\newpage
+\phantom{.}
+\input{page16}
+
+	
+\end{document}
